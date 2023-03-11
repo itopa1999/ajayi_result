@@ -1,0 +1,75 @@
+{% extends 'admin1/base.html' %}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+  
+      h6 {
+        text-align: center;
+      }
+  
+      .row {
+        margin: 100px;
+      }
+      table,td{
+        background-color: rgb(7, 250, 238);
+        border-collapse: collapse;
+        font-family:Sofia;
+        color: rgb(230, 149, 0);
+        font-size: 17px;
+    }
+    table{
+      width:100%;
+    }
+  </style>
+  </head>
+  {% if res %}
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">{{lec.name}} Result Submitted</h6>
+      </div>
+      <table class="table " id="dev-table">
+        
+          <tr>
+  
+            <th>Student</th>
+            <th>Course Name</th>
+            <th>Course unit</th>
+            <th>Exam Score</th>
+            <th>Test Score</th>
+            <th>Attendant Score</th>
+            <th>Grade</th>
+            <th>Quality point</th>
+          </tr>
+        
+        {% for t in res %}
+        <tr>
+  
+          <td> {{t.student}}</td>
+          <td> {{t.course}}</td>
+          <td> {{t.cu}}</td>
+          <td> {{t.exam_score}}</td>
+          <td> {{t.test_score}}</td>
+          <td> {{t.attendant_score}}</td>
+          <td> {{t.grade}}</td>
+          <td> {{t.qp}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  {% else %}
+  <center><h2>No submitted result yet</h2></center>
+  {% endif %}
+  {% endblock content %}

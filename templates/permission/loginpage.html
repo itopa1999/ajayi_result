@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <style>
+        /* background style */
+body {
+      background-repeat: no-repeat;
+      background-attachment:scroll;  
+      background-size:cover;   
+  }
+
+/*login container style*/
+.container {
+      position: absolute;
+      right: 0;
+      margin-top: 340px;
+      margin-right: 100px;
+      max-width: 300px;
+      padding: 16px;
+      background-color:none;
+  }
+
+h1 {
+      color: rgb(37, 30, 30);
+      text-align: center;
+      font-size:40px;
+  }
+
+/*login input style*/
+input[type=text], input[type=password] {
+      width: 90%;
+      padding: 10px;
+      margin: 1px 0 22px 0;
+      border:#201e2b;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      border: 5px solid rgb(37, 30, 30);
+      border-radius: 50px;
+      font-size: 15px;
+  }
+
+::placeholder {
+      color: rgb(37, 30, 30);
+      font-size:15px;
+      text-transform: uppercase;
+  }
+
+input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: rgb(37, 30, 30);
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: rgb(37, 30, 30);
+  }
+
+/*login button style*/
+.btn {
+        background-color: rgb(37, 30, 30);
+        border: none;
+        color:white;
+        padding: 16px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition: 0.3s;
+        float:right;
+        cursor: pointer;
+        font-size: larger;
+        font-weight: bold;
+  }
+
+/*select box style*/
+.custom-select {
+        font-family: Arial;
+        border: 5px solid rgb(37, 30, 30);
+        padding-bottom:5px;
+        border-radius: 50px;
+        margin: 1px 0 22px 0;
+  }
+
+.custom-select select {
+        display:none;
+  }
+
+.select-selected {
+        background-color: rgb(251, 253, 255);
+  }
+
+.select-selected.select-arrow-active:after {
+        border-color: transparent transparent rgb(90, 104, 230) transparent;
+        top: 7px;
+  }
+
+.select-items div,.select-selected {
+        color: #070000;
+        padding: 8px 15px;
+        cursor: pointer;
+        user-select: none;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size:15px;
+  }
+
+/*style items (options):*/
+.select-items {
+        position: absolute;
+        background-color: rgb(247, 249, 252);
+        z-index:auto;
+        padding-top:-10px;
+        font-size: 16px;
+  }
+
+.select-hide {
+        display: none;
+  }
+
+.select-items div:hover, .same-as-selected {
+        background-color: rgb(94, 94, 175);
+  }
+
+  p {
+      border-top: 6px solid rgb(37, 30, 30);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      height:30px;
+      background-color: lightgrey;
+      padding: 5px;
+      color: black;
+      font-weight: bolder;
+  }
+
+  .show {
+      text-align: right;
+      color: rgb(37, 30, 30);
+      font-weight: bolder;
+    }
+    </style>
+
+</head>
+<!-- backgorund image -->
+<body onload="message()" style="background-image: url('{% static '/image/bg3.png' %}');" >
+    <!-- container, form, dropdown, and login credientials -->
+  <div class="container">
+    <form action="" method="POST" >
+      {% csrf_token %}
+      <div class="absolute">
+        <h1>Login</h1>
+<label for="Staff ID"></label>
+<input type="text" placeholder="Enter Username" name="username" required>
+  <label for="password"></label>
+      <input type="password" id="password" placeholder="Enter Password" name="password" required>
+      <b id="text" style="display:none; color:red;">Caps lock is ON.</b>
+      <div class="show"><input type="checkbox" onclick="myFunction()">Show Password<br></div>
+        <button type="submit" name="submit" class="btn">submit</button><br>
+        <a style="text-decoration:none; font-weight:bolder; color:rgb(37, 30, 30);" href="">Forgot Password?</a>
+          </div>
+      </div> 
+    </div>
+  </form>
+  <script>
+  {% for message in messages %}
+  
+      function message(){
+          Swal.fire({
+              title: '<strong>{{message}}!</strong>',
+              iconColor:'aaa',
+              icon:'error',
+              width: 400,
+              showConfirmButton:false,
+              allowOutsideClick:true,
+              scrollbarPadding:false,
+              showCloseButton: true,
+            })
+            
+      }
+   {% endfor %}
+
+
+
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+          x.type = "text";
+      } else {
+          x.type = "password";
+      }
+  }
+
+  var input = document.getElementById("password");
+  var text = document.getElementById("text");
+  input.addEventListener("keyup", function(event) {
+  
+  if (event.getModifierState("CapsLock")) {
+      text.style.display = "block";
+    } else {
+      text.style.display = "none"
+    }
+  });
+</script> 
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'admin1/base.html' %}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+<style>
+
+</style>
+
+{% if lec %}
+<div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title h2 m-2 align-center"><center>All Lecturer</center></h6>
+      </div>
+      <table class="table table-radius-5 table-hover table-bordered" id="dev-table">
+        
+        <thead>
+          <tr>
+  
+            <th>Name</th>           
+            <th>Staff ID</th>
+            <th>Department</th>
+            <th>Faculty</th>
+            <th>View Profile</th>
+          </tr>
+        </thead>
+        {% for t in lec %}
+        <tr>
+  
+          <td> {{t.name}}</td>
+          <td> {{t.staff_ID}}</td>
+          <td> {{t.department}}</td>
+          <td> {{t.faculty}}</td>
+          <td> <center><a href="{% url 'profilelecturer' t.id%}"><i class="fa fa-eye fa-2x"></i></a></center></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% else %}
+<center><h2>No Lecturer yet</h2></center>
+{% endif %}
+
+
+{% endblock content%}

@@ -1,0 +1,168 @@
+{% extends 'admin1/base.html' %}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+    <style media="screen">
+      a:link {
+        text-decoration: none;
+      }
+  
+      h6 {
+        text-align: center;
+      }
+  
+      .row {
+        margin: 100px;
+      }
+      table,td{
+        background-color: rgb(7, 250, 238);
+        border-collapse: collapse;
+        font-family:Sofia;
+        color: rgb(230, 149, 0);
+        font-size: 17px;
+    }
+  </style>
+  </head>
+  <br><br>
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">{{tit}}</h6>
+      </div>
+      <table class="table " id="dev-table">
+          <tr>
+            <th>Course Name</th>
+            <th>Course unit</th>
+            <th>Exam</th>
+            <th>Test</th>
+            <th>Attendant</th>
+            <th>Grade</th>
+            <th>Quality point</th>
+          </tr>
+        
+        {% for t in res %}
+        <tr>
+  
+          <td> {{t.course}}</td>
+          <td> {{t.cu}}</td>
+          <td> {{t.exam_score}}</td>
+          <td> {{t.test_score}}</td>
+          <td> {{t.attendant_score}}</td>
+          <td> {{t.grade}}</td>
+          <td> {{t.qp}}</td>
+        </tr>
+        {% endfor %}
+        <td>Total Semester GPA</td>
+        <td>{{gpaa}}</td>
+        <td>{{grade}}</td>
+      </table>
+<br>
+
+<h6 class="panel-title">{{tit1}}</h6>
+      
+      <table class="table " id="dev-table">
+          <tr>
+            <th>Course Name</th>
+            <th>Course unit</th>
+            <th>Exam</th>
+            <th>Test</th>
+            <th>Attendant</th>
+            <th>Grade</th>
+            <th>Quality point</th>
+          </tr>
+        
+        {% for t in res1 %}
+        <tr>
+  
+          <td> {{t.course}}</td>
+          <td> {{t.cu}}</td>
+          <td> {{t.exam_score}}</td>
+          <td> {{t.test_score}}</td>
+          <td> {{t.attendant_score}}</td>
+          <td> {{t.grade}}</td>
+          <td> {{t.qp}}</td>
+        </tr>
+        {% endfor %}
+        <td>Total Semester GPA</td>
+        <td>{{gpaa1}}</td>
+        <td>{{grade1}}</td>
+    </tr>
+    <td>Total  CGPA</td>
+    <td>{{cgpa}}</td>
+      </table>
+<br>
+
+<h6 class="panel-title">{{tit2}}</h6>
+      
+      <table class="table " id="dev-table">
+          <tr>
+            <th>Course Name</th>
+            <th>Course unit</th>
+            <th>Exam</th>
+            <th>Test</th>
+            <th>Attendant</th>
+            <th>Grade</th>
+            <th>Quality point</th>
+          </tr>
+        
+        {% for t in res2 %}
+        <tr>
+  
+          <td> {{t.course}}</td>
+          <td> {{t.cu}}</td>
+          <td> {{t.exam_score}}</td>
+          <td> {{t.test_score}}</td>
+          <td> {{t.attendant_score}}</td>
+          <td> {{t.grade}}</td>
+          <td> {{t.qp}}</td>
+        </tr>
+        {% endfor %}
+        <td>Total Semester GPA</td>
+        <td>{{gpaa2}}</td>
+        <td>{{grade2}}</td>
+      </table>
+<br>
+
+<h6 class="panel-title">{{tit3}}</h6>
+      
+      <table class="table " id="dev-table">
+          <tr>
+            <th>Course Name</th>
+            <th>Course unit</th>
+            <th>Exam</th>
+            <th>Test</th>
+            <th>Attendant</th>
+            <th>Grade</th>
+            <th>Quality point</th>
+          </tr>
+        
+        {% for t in res3 %}
+        <tr>
+  
+          <td> {{t.course}}</td>
+          <td> {{t.cu}}</td>
+          <td> {{t.exam_score}}</td>
+          <td> {{t.test_score}}</td>
+          <td> {{t.attendant_score}}</td>
+          <td> {{t.grade}}</td>
+          <td> {{t.qp}}</td>
+        </tr>
+        {% endfor %}
+        <td>Total Semester GPA</td>
+        <td>{{gpaa3}}</td>
+        <td>{{grade3}}</td>
+    </tr>
+    <td>Total  CGPA</td>
+    <td>{{cgpa2}}</td>
+      </table>
+<br>
+    </div>
+    </div>
+  </div>
+  {% endblock content %}

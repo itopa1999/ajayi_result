@@ -1,0 +1,85 @@
+{% extends 'admin1/base.html' %}
+{% load static %}
+{% load widget_tweaks %} 
+{% block content%}
+<style>
+    /* Add styles to the form container */
+.container {
+    max-width: 500px;
+    padding: 16px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    border-radius:8px;
+    border-color:2px solid rgb(37, 30, 30);
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password],input[type=email]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+select {
+    border-radius:8px;
+    border-color:2px solid rgb(37, 30, 30);
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+select:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color:rgb(37, 30, 30);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+</style>
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <br><br><br>
+  <div class="container">
+    <h1 style="text-align:center; color:rgb(37, 30, 30);">Create Department</h1>
+    <center><i class='	fa fa-building' style="font-size:60px; color:rgb(37, 30, 30);"></i></center>
+
+    {% render_field form.name|attr:'required:true' class="form-control" placeholder="Department Name" %}
+
+    {% render_field form.facultyID|attr:'required:true' class="form-control" placeholder="" %}
+
+    {% render_field form.hod|attr:'required:true' class="form-control" placeholder="HOD Name" %}
+
+    <center><button type="submit" class="btn">Add Department</button></center>
+    
+  </div>
+</form>
+
+{% endblock content %}

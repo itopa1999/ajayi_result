@@ -1,0 +1,96 @@
+{% extends 'lecturer/base.html' %}
+{% load static %}
+{% load widget_tweaks %} 
+{% block content%}
+<style>
+    /* Add styles to the form container */
+.container {
+    max-width: 500px;
+    padding: 16px;
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email],input[type=number] {
+    border-radius:8px;
+    border-color:2px solid rgb(37, 30, 30);
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password],input[type=email],input[type=number]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+select {
+    border-radius:8px;
+    border-color:2px solid rgb(37, 30, 30);
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+select:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color:rgb(37, 30, 30);
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+</style>
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <br><br><br>
+  <div class="container">
+    <h1 style="text-align:center; color:rgb(37, 30, 30);">Add Student Result</h1>
+    <center><i class='fa fa-plus-circle' style="font-size:60px; color:rgb(37, 30, 30);"></i></center>
+
+    {% render_field form.studentID|attr:'required:true' class="form-control" %}
+
+    {% render_field form.courseID|attr:'required:true' class="form-control" %}
+
+    {% render_field form.cu|attr:'required:true' class="form-control" placeholder="Course Unit" %}
+
+    {% render_field form.exam_score|attr:'required:true' class="form-control" placeholder="Exam score" %}
+
+    {% render_field form.test_score|attr:'required:true' class="form-control" placeholder="Test score" %}
+
+    {% render_field form.attendant_score|attr:'required:true' class="form-control" placeholder="Attendant score" %}
+
+    <b style="display:none;"> {% render_field form.lecturer class="form-control" placeholder="Lecturer" %}</b>
+
+
+
+    <center><button type="submit" class="btn">Add Result</button></center>
+    
+  </div>
+</form>
+
+
+{% endblock content %}

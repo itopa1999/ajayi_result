@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+  <!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!----======== CSS ======== -->    
+    <!----===== Boxicons CSS ===== -->
+    <link href="{% static '/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/card.css' %}">
+
+    <!--<title>Dashboard Sidebar Menu</title>--> 
+    <style>
+        body{
+            overflow-y: scroll;
+        }
+        body::-webkit-scrollbar{
+            display: none;
+        }
+        <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' />
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Sofia;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+
+
+.header {
+  background: #22242A;
+  padding: 20px;
+  width: 100%;
+  z-index: 1;
+  color:#FFF;
+  text-decoration: none;
+  font-weight: bolder;
+}
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: rgb(136, 29, 223) ;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+        width: 45px;
+      }
+</style>
+</head>
+<body onload="message()">
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                </span>
+
+                <div class="text logo-text">
+                    <center><span class="name">
+                    <h2><span class="profession">{{request.user.first_name}}</h2></span>
+                    <span class="profession">{{request.user.userid}}</span></center>
+                </div>
+            </div>
+            <i class='fa fa-caret-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+
+                    <li class="">
+                        <a href="{% url 'admindashboard' %}">
+                            <i class='fa fa-home icon' title="My Dashboard"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a href="{% url 'admin_lecturer' %}" id="come">
+                            <i class='fa fa-chalkboard-teacher icon' title="lecturer section"></i>
+                            <span class="text nav-text">Lecturer Section</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'admin_student' %} " id="come">
+                            <i class='fa fa-user-graduate icon' title="student section"></i>
+                            <span class="text nav-text">Student Section</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{% url 'adminfaculty' %}" id="come">
+                            <i class='fa fa-braille icon' title=" faculty"></i>
+                            <span class="text nav-text">Manage Faculty</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                      <a href="{% url 'admindepartment' %}" id="come">
+                          <i class='fa fa-building icon' title=" department"></i>
+                          <span class="text nav-text">Manage Department</span>
+                      </a>
+                  </li>
+
+                  <li class="">
+                    <a href="{% url 'admincourse' %}" id="come">
+                        <i class='fa fa-book icon' title="manage course"></i>
+                        <span class="text nav-text">Manage Course</span>
+                    </a>
+                </li>
+
+                <li class="">
+                  <a href="{% url 'adminresult' %}" id="come">
+                      <i class='fa fa-file icon' title=" result"></i>
+                      <span class="text nav-text">View Submitted Result</span>
+                  </a>
+              </li>
+
+
+              <li class="">
+                <a href="{% url 'studentresult' %}" id="come">
+                    <i class='fa fa-certificate icon' title="student result"></i>
+                    <span class="text nav-text">Student Result</span>
+                </a>
+            </li>
+
+
+            <li class="">
+              <a href="{% url 'registration' %}" id="come">
+                  <i class='fa fa-plus icon' title="registration"></i>
+                  <span class="text nav-text">Add Users</span>
+              </a>
+          </li>
+
+                <li class="">
+                    <a href="{% url 'changepassword' %}">
+                        <i class='fa fa-key icon' title="Change Password"></i>
+                        <span class="text nav-text">Change Password</span>
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="#" onclick="message3()">
+                        <i class='fa fa-sign-out-alt icon' title="Logout"></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+              
+            </div>
+        </div>
+    </nav>
+    <section class="home">
+        <div class="contain" >
+            <div class="header">
+               <h2 style="margin-left:10px;">Ajayi Polytechnic Student Result Site</h2>
+                </div>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button>
+<div style="margin:5px;">
+    {% include 'admin1/msg.html' %} 
+{% block content %}
+   
+{% endblock content %}
+        </div>
+        
+        </section> 
+    <script>
+    const body = document.querySelector('body'),
+    sidebar = body.querySelector('nav'),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text");
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+</script>
+<script>
+    function message3(){
+        Swal.fire({
+            title: 'Ready to Leave?',
+            icon: 'question',
+            iconColor:'aaa',
+            width: 400,
+            showConfirmButton:true,
+            showCancelButton:true,
+            allowOutsideClick:true,
+            scrollbarPadding:false,
+            showCloseButton: true,
+            reverseButtons:true,
+            focusConfirm:false,
+            confirmButtonText:'Logout',
+            html:
+            "<b>Select 'Logout' below if you are ready to end your current session.",
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{% url 'logout' %}"
+            }
+        })
+    }
+
+  </script>
+    
+    <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/jquery-easing/jquery.easing.min.js' %}"></script>
+
+
+    <script>       
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+      </script>
+
+</body>
+</html>

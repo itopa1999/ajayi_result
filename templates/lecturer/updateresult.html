@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+  <head>
+  <html lang="en" dir="ltr">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Gill Sans", sans-serif;;
+    }
+
+    header {
+      position: fixed;
+      background: #22242A;
+      padding: 20px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .left_area h3 {
+      color: white;
+      margin: 0px;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .left_area span {
+      color: #19B3D3;
+    }
+
+
+
+    .logout_btn {
+      padding: 5px;
+      background: #ef5350;
+      text-decoration: none;
+      float: right;
+      margin-top: -30px;
+      margin-right: 40px;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      transition: 0.5s;
+
+    }
+
+    .logout_btn:hover {
+      background:#ca4745;
+    }
+
+    .sidebar {
+      background: rgb(37, 30, 30);
+      margin-top: 70px;
+      padding-top: 30px;
+      position: fixed;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      transition: 0.5s;
+      transition-property: left;
+    }
+
+
+    .sidebar h4 {
+      color: #ccc;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 60px;
+      text-decoration: none;
+      padding-left: 40px;
+      box-sizing: border-box;
+      transition: 0.5s;
+
+    }
+
+    .sidebar a:hover {
+      background:  #969696;
+      color:white;
+    }
+
+    .sidebar i {
+      padding-right: 10px;
+    }
+
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      font-size: 20px;
+      margin: 5px 0;
+      transition: 0.5s;
+      transition-property: color;
+    }
+
+    label #sidebar_btn:hover {
+      color: #5f5f5f;
+    }
+
+    #check:checked~.sidebar {
+      left: -190px;
+    }
+
+    #check:checked~.sidebar a span {
+      display: none;
+    }
+
+    #check:checked~.sidebar a {
+      font-size: 20px;
+      margin-left: 170px;
+      width: 80px;
+    }
+
+    .content {
+      margin-left: 250px;
+      background: url(background.png) no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      transition: 0.5s;
+    }
+
+    #check:checked~.content {
+      margin-left: 60px;
+    }
+
+    #check {
+      display: none;
+    }
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' />
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Sofia;
+    }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        padding-top: 60px;
+    }
+    
+    /* Modal Content/Box */
+    .modal-content {
+        background: rgb(240, 239, 238);
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 40%; /* Could be more or less, depending on screen size */
+        height: fit-content;
+        border-radius: 10px;
+    }
+    .container1 {
+        margin: auto;
+        top: auto;
+        width: auto;
+        height: fit-content;
+        max-width: 500px;
+        text-align: center;
+        text-decoration: none;
+    }
+    
+    /* The Close Button (x) */
+    .cancel{
+        background-color:rgba(31, 26, 26, 0.329);
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 80%;
+        opacity: 0.9;
+        border-radius:8px;
+        margin-top:30px
+
+    }
+    
+    
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+    
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)} 
+        to {-webkit-transform: scale(1)}
+    }
+        
+    @keyframes animatezoom {
+        from {transform: scale(0)} 
+        to {transform: scale(1)}
+    }
+    .btn1 {
+      background-color:rgb(37, 30, 30);
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      opacity: 0.9;
+      border-radius:8px;
+    }
+    
+    .btn1:hover {
+      opacity: 1;
+    }
+    input[type=text], input[type=password], input[type=email],input[type=number] {
+        border-radius:8px;
+        border-color:2px solid rgb(37, 30, 30);
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        background: #f1f1f1;
+    }
+    
+    input[type=text]:focus, input[type=password],input[type=email],input[type=number]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+    
+    select {
+        border-radius:8px;
+        border-color:2px solid rgb(37, 30, 30);
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        background: #f1f1f1;
+    }
+    
+    select:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+    label{
+        font-weight:bolder;
+    }
+  </style>
+
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+  <link rel="stylesheet" href="{% static '/css/all.css' %}">
+
+
+</head>
+
+<body onload="document.getElementById('id01').style.display='block'";>
+
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i style="left: 400px;margin-top: 17px;"class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3 style="color:white;">Ajayi Polytecnic Result</h3>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <center>
+
+      <h2 style="color:white;">Lecturer<br>{{request.user.first_name}}</h2>
+
+    </center>
+
+    <a href="{% url 'lecturerdashboard' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="{% url 'lecturercourse' %}"><i class="fas fa-book"></i><span>View Courses</span></a>
+    <a href="{% url 'addresult' %}"><i class="fas fa-certificate"></i><span>Add Student Result</span></a>
+    <a href="{% url 'lecturerviewresult' %}"><i class="fas fa-certificate"></i><span>View Student Result</span></a>
+    <a href="{% url 'logout' %}"><i class="fas fa-sign-out"></i><span>Logout</span></a>
+    
+
+
+  </div>
+  <!--sidebar end-->
+
+
+  <!--content start-->
+  <div class="content">
+    <br><br><br><br><br>
+    <div class="container3">
+        <div id="id01" class="modal">
+    
+            <div class="modal-content animate">
+          
+              <div class="container1">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                  <div class="container1">
+                    <h2 style="text-align:center; color:rgb(37, 30, 30);">Update Student</h2>
+                    <label>Student Name</label>              
+                    {{form.student }}
+                    <label>Course Name</label> 
+                    {{form.course}}
+                    <label>Course Uit</label> 
+                    {{form.cu}}
+                    <label>Exam Score</label> 
+                    {{form.exam_score}}
+                    <label>Test Score</label> 
+                    {{form.test_score}}
+                    <label>Attendant Score</label> 
+                    {{form.attendant_score}}
+    
+                    <b style="display: none;">{{form.lecturer}} </b>
+                
+                    <p style="text-align: center;"><button type="submit" class="btn1">Update</button></p></form><br>
+                    <a href="{% url 'lecturerviewresult' %}" onclick="document.getElementById('id01').style.display='none'" class="cancel">cancel</a>
+                    <br><br>
+                  </div>
+                
+              </div>
+            </div>
+        </div>
+          <script>
+            // Get the modal
+         var modal = document.getElementById('id01');
+         
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+             if (event.target == modal) {
+                 modal.style.display = "show";
+             }
+         }
+        
+               </script>
+
+
+    <br><br><br>
+  </div>
+  <!--content end-->
+</body>
+
+</html>

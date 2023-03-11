@@ -1,0 +1,52 @@
+{% extends 'lecturer/base.html' %}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+<style>
+    body {
+        overflow-x: hidden;
+      }
+      .o-hidden {
+        overflow: hidden !important;
+      }
+    .card-body-icon {
+        position: absolute;
+        z-index: 0;
+        top: -25px;
+        right: -25px;
+        font-size: 5rem;
+        -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg);
+      }
+      .col-xl-3 col-sm-6 mb-3{
+        margin-left:auto;
+        margin-left:auto;
+      }
+    </style>
+    <center>
+{% if cou %}
+{% for i in cou %}
+<br><br>
+<div class="col-xl-6 col-sm-6 mb-3" style="height:150px;">
+    <div class="card text-white bg-danger o-hidden h-100">
+      <div class="card-body">
+        <div class="card-body-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="mr-5">{{i.name}}</div>
+      </div>
+      <a class="card-footer text-white clearfix small z-1" href="{% url 'lecturercourseprofile' i.id %}">
+        <span class="float-left" style="font-size:25px;">View Details</span>
+        <span class="float-right">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </a>
+    </div>
+</div><br>{% endfor %}
+</div></center>
+{% else %}
+<center><h2>No course yet</h2></center>
+{% endif %}
+
+{% endblock content%}

@@ -1,0 +1,65 @@
+{% extends 'admin1/base.html' %}
+{% load static %}
+{% block content%}
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+<style>
+    body {
+        overflow-x: hidden;
+      }
+      .o-hidden {
+        overflow: hidden !important;
+      }
+    .card-body-icon {
+        position: absolute;
+        z-index: 0;
+        top: -25px;
+        right: -25px;
+        font-size: 5rem;
+        -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg);
+      }
+      .col-xl-6 col-sm-6 mb-3{
+        margin-left:auto;
+        margin-left:auto;
+      }
+    </style>
+
+
+
+<div class="row">
+    <div class="col-xl-6 col-sm-6 mb-3" style="height:150px; ">
+      <div class="card text-white bg-primary o-hidden h-100">
+        <div class="card-body" >
+          <div class="card-body-icon">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="mr-5"></div>
+        </div>
+        <a class="card-footer text-white clearfix small z-1" href="{% url 'registeradmin' %}">
+          <span class="float-left" style="font-size:25px;">Register Administrator</span>
+          <span class="float-right">
+            <i class="fa fa-angle-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-sm-6 mb-3" style="height:150px;">
+        <div class="card text-white bg-warning o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="mr-5"></div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" href="{% url 'registerlecturer' %}">
+            <span class="float-left" style="font-size:25px;">Register Lecturer</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+
+        
+{% endblock content%}

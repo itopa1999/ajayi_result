@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="{% static '/js/sweetalert2.all.min.js' %} "></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/all.css' %}">
+</head>
+<style>
+    body,
+    html {
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+    background: rgba(30,29,31,1);
+    background: -moz-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgb(37, 30, 30) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(30,29,31,1)), color-stop(100%, rgb(37, 30, 30)));
+    background: -webkit-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgb(37, 30, 30) 100%);
+    background: -o-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgb(37, 30, 30) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgb(37, 30, 30) 100%);
+    background: linear-gradient(135deg, rgba(30,29,31,1) 0%, rgb(37, 30, 30) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1d1f', endColorstr='#df405a', GradientType=1 );
+    }
+    .container {
+        margin: auto;
+        top: auto;
+        width: auto;
+        height: fit-content;
+        max-width: 500px;
+        background-color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
+
+    }
+    h1{
+        color: rgba(43, 45, 46, 0.884);
+    }
+    button {
+        background-color: rgb(37, 30, 30);
+        width: 60%;
+        border: none;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 10px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border-radius: 5px;
+        height: fit-content;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    button:hover {
+        box-shadow: 0 12px 16px 0 rgb(37, 30, 30),0 17px 50px 0 rgb(37, 30, 30);
+        background-color: white;
+        color: rgb(37, 30, 30);
+        border: 2px solid rgb(37, 30, 30);
+    }
+    @media screen and (max-width: 600px) {
+        .container {
+            width: fit-content;
+            height: fit-content;
+            max-width: 400px;
+            margin-bottom: 100%;
+        }
+        button {
+            float: none;
+            width: 60%;
+            margin-top: 20px;
+            margin-bottom: 10px;
+         }
+     }
+</style>
+<body>
+    <br><br><br><br>
+    <div class="container">
+        <br><br><br>
+        <i class='fa fa-user' style="font-size:80px; color:#a1a1a1;"></i>
+        <h1>Dear User</h1>
+    <h1>Your  have Successfully logout out of the system</h1>
+        <b style="font-size:20px;">Do you want to login?</b> <br><br>
+        <b><i class='fa-asterisk'>Click below to login ack</i><br>
+        <a class="underlineHover" href="{% url 'login_user' %}"><button>Login</button></a>
+    </div>
+</body>
+</html>
